@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start:prod": "bun run ./src/App.ts",
+    "start:dev": "bun --hot run ./src/App.ts",
+    "start:stage": "bun --hot run ./src/App.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
