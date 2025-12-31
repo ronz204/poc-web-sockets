@@ -1,6 +1,8 @@
+import http from "http";
 import express from "express";
 
 const expr = express();
+const server = http.createServer(expr);
 
 expr.get("/", (req, res) => {
   console.log(req.ip);
@@ -10,6 +12,6 @@ expr.get("/", (req, res) => {
   });
 });
 
-expr.listen(3000, () => {
+server.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
