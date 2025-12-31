@@ -4,9 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start:prod": "bun run ./src/App.ts",
-    "start:dev": "bun --hot run ./src/App.ts",
-    "start:stage": "bun --hot run ./src/App.ts"
+    "start:prod": "bun run ./src/Entrypoint.ts",
+    "start:dev": "bun --hot run ./src/Entrypoint.ts",
+    "start:stage": "bun --hot run ./src/Entrypoint.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
