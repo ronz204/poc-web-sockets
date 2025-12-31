@@ -9,9 +9,13 @@
     "start:stage": "bun --hot run ./src/Entrypoint.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/express": "^5.0.6"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }
