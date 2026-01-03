@@ -20,6 +20,11 @@ expr.get("/", (req, res) => {
 socket.on("connection", (io) => {
   console.log("a user connected", io.id);
 
+  io.on("send-message", (message: string) => {
+    console.log(`Message from ${io.id}: ${message}`);
+    io.broadcast.emit("receive-message", message);
+  });
+
   io.on("disconnect", () => {
     console.log("user disconnected", io.id);
   });
