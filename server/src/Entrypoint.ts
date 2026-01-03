@@ -1,14 +1,27 @@
 import http from "http";
 import express from "express";
+import { Server } from "socket.io";
 
 const expr = express();
 const server = http.createServer(expr);
+
+const socket = new Server(server, {
+  cors: { origin: "*" }
+});
 
 expr.get("/", (req, res) => {
   console.log(req.ip);
 
   res.status(200).json({
     message: "Hello World!",
+  });
+});
+
+socket.on("connection", (io) => {
+  console.log("a user connected", io.id);
+
+  io.on("disconnect", () => {
+    console.log("user disconnected");
   });
 });
 
