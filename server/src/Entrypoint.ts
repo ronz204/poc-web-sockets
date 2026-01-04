@@ -1,4 +1,5 @@
 import http from "http";
+import winston from "winston";
 import express from "express";
 import { Server } from "socket.io";
 import { AuthRouter } from "@Routers/AuthRouter";
@@ -8,6 +9,19 @@ const server = http.createServer(expr);
 
 const socket = new Server(server, {
   cors: { origin: "*" }
+});
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.Console(),
+  ],
+});
+
+expr.use((req, res, next) => {
+  logger.info(`${req.method} ${req.url}`);
+  next();
 });
 
 expr.use("/api/auth", AuthRouter);
