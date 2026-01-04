@@ -1,15 +1,9 @@
 import { Router } from "express";
+import { AuthController } from "@Controllers/AuthController";
 
+const controller = new AuthController();
 export const AuthRouter = Router();
 
-AuthRouter.get("/test", (req, res) => {
-  res.status(200).json({ message: "Auth Router is working" });
-});
-
-AuthRouter.post("/login", (req, res) => {
-  res.status(200).json({ message: "Login successful" });
-});
-
-AuthRouter.post("/register", (req, res) => {
-  res.status(201).json({ message: "Registration successful" });
-});
+AuthRouter.get("/ping", controller.ping);
+AuthRouter.post("/login", controller.login);
+AuthRouter.post("/register", controller.register);
