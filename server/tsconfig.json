@@ -28,6 +28,11 @@
 
     // Path aliases
     "paths": {
+      // Infrastructure
+      "@Configs/*": ["./src/Infrastructure/Configs/*"],
+      "@Security/*": ["./src/Infrastructure/Security/*"],
+
+      // Presentation
       "@Routers/*": ["./src/Presentation/Routers/*"],
       "@Controllers/*": ["./src/Presentation/Controllers/*"],
     }
