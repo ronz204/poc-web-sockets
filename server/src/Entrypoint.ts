@@ -3,17 +3,16 @@ import cors from "cors";
 import winston from "winston";
 import express from "express";
 import { Server } from "socket.io";
+import { CorsConfig } from "@Configs/Cors";
 import { AuthRouter } from "@Routers/AuthRouter";
 
 const expr = express();
 const server = http.createServer(expr);
 
-expr.use(cors({
-  origin: "*",
-}));
+expr.use(cors(CorsConfig));
 
 const socket = new Server(server, {
-  cors: { origin: "*" }
+  cors: CorsConfig
 });
 
 const logger = winston.createLogger({
