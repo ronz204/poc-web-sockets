@@ -3,6 +3,7 @@ import cors from "cors";
 import winston from "winston";
 import express from "express";
 import { Server } from "socket.io";
+import { AppConfig } from "@Configs/App";
 import { CorsConfig } from "@Configs/Cors";
 import { AuthRouter } from "@Routers/AuthRouter";
 
@@ -43,6 +44,6 @@ socket.on("connection", (io) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
+server.listen(AppConfig.port, () => {
+  console.log(`Server is running on http://localhost:${AppConfig.port}`);
 });
