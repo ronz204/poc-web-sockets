@@ -5,6 +5,7 @@ import { Server } from "socket.io";
 import { AppConfig } from "@Configs/App";
 import { CorsConfig } from "@Configs/Cors";
 import { AuthRouter } from "@Routers/AuthRouter";
+import { LoggingMiddleware } from "@Middlewares/Logging";
 
 export class Bootstrap {
   private readonly socket: Server;
@@ -24,6 +25,11 @@ export class Bootstrap {
 
   public addRouting(): void {
     this.app.use("/api/auth", AuthRouter);
+  };
+
+  public addMiddlewares(): void {
+    this.app.use(LoggingMiddleware);
+    this.socket.engine.use(LoggingMiddleware);
   };
 
   public addSockets(): void {
