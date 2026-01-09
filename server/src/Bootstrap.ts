@@ -4,6 +4,7 @@ import cors from "cors";
 import { Server } from "socket.io";
 import { AppConfig } from "@Configs/App";
 import { CorsConfig } from "@Configs/Cors";
+import { LimiterConfig } from "@Configs/Limit";
 import { AuthRouter } from "@Routers/AuthRouter";
 import { LoggingMiddleware } from "@Middlewares/Logging";
 
@@ -30,6 +31,10 @@ export class Bootstrap {
   public addMiddlewares(): void {
     this.app.use(LoggingMiddleware);
     this.socket.engine.use(LoggingMiddleware);
+  };
+
+  public addRateLimiting(): void {
+    this.app.use(LimiterConfig);
   };
 
   public addSockets(): void {
