@@ -35,6 +35,7 @@
       // Presentation
       "@Routers/*": ["./src/Presentation/Routers/*"],
       "@Controllers/*": ["./src/Presentation/Controllers/*"],
+      "@Middlewares/*": ["./src/Presentation/Middlewares/*"],
     }
   }
 }
