@@ -1,6 +1,6 @@
 import type { Server, Socket } from "socket.io";
 
-export abstract class Hub {
+export abstract class BaseHub {
   protected abstract readonly namespace: string;
   constructor(protected readonly io: Server) {};
 

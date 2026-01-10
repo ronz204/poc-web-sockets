@@ -1,7 +1,7 @@
 import type { Server, Socket } from "socket.io";
-import { Hub } from "./Hub";
+import { BaseHub } from "./BaseHub";
 
-export class ExampleHub extends Hub {
+export class ExampleHub extends BaseHub {
   protected readonly namespace: string = "/example";
 
   constructor(io: Server) {
