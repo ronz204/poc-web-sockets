@@ -33,9 +33,9 @@
       "@Security/*": ["./src/Infrastructure/Security/*"],
 
       // Presentation
-      "@Routers/*": ["./src/Presentation/Routers/*"],
-      "@Controllers/*": ["./src/Presentation/Controllers/*"],
-      "@Middlewares/*": ["./src/Presentation/Middlewares/*"],
+      "@Routers/*": ["./src/Presentation/Https/Routers/*"],
+      "@Controllers/*": ["./src/Presentation/Https/Controllers/*"],
+      "@Middlewares/*": ["./src/Presentation/Https/Middlewares/*"],
     }
   }
 }
