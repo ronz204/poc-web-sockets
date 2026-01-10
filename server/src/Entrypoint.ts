@@ -7,6 +7,5 @@ const bootstrap = new Bootstrap(app);
 bootstrap.addCors();
 bootstrap.addRouting();
 bootstrap.addSockets();
-bootstrap.addMiddlewares();
 
 bootstrap.listen();
