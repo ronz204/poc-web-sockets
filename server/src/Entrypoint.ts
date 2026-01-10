@@ -8,7 +8,6 @@ bootstrap.addCors();
 bootstrap.addRouting();
 bootstrap.addSockets();
 bootstrap.addMiddlewares();
-bootstrap.addRateLimiting();
 
 bootstrap.listen();
 
