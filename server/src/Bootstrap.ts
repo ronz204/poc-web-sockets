@@ -4,6 +4,7 @@ import cors from "cors";
 import { Server } from "socket.io";
 import { AppConfig } from "@Configs/App";
 import { CorsConfig } from "@Configs/Cors";
+import { ExampleHub } from "@Hubs/ExampleHub";
 import { ApiRouting } from "@Routers/ApiRouting";
 
 export class Bootstrap {
@@ -27,18 +28,7 @@ export class Bootstrap {
   };
 
   public addSockets(): void {
-    this.socket.on("connection", (io) => {
-      console.log("a user connected", io.id);
-
-      io.on("send-message", (message: string) => {
-        console.log(`Message from ${io.id}: ${message}`);
-        io.broadcast.emit("receive-message", message);
-      });
-
-      io.on("disconnect", () => {
-        console.log("user disconnected", io.id);
-      });
-    });
+    new ExampleHub(this.socket);
   };
 
   public listen(): void {
