@@ -10,18 +10,3 @@ bootstrap.addSockets();
 bootstrap.addMiddlewares();
 
 bootstrap.listen();
-
-
-/* const logger = winston.createLogger({
-  level: "info",
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console(),
-  ],
-});
-
-expr.use((req, res, next) => {
-  logger.info(`${req.method} ${req.url}`);
-  next();
-}); */
-
