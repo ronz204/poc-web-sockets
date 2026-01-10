@@ -33,6 +33,7 @@
       "@Security/*": ["./src/Infrastructure/Security/*"],
 
       // Presentation
+      "@Hubs/*": ["./src/Presentation/Sockets/Hubs/*"],
       "@Routers/*": ["./src/Presentation/Https/Routers/*"],
       "@Controllers/*": ["./src/Presentation/Https/Controllers/*"],
       "@Middlewares/*": ["./src/Presentation/Https/Middlewares/*"],
