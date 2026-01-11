@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    networks:
+      - infra-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=sockets
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin1234
+
+volumes:
+  postgres-data:
+    driver: local
+    name: postgres-data
+
+networks:
+  infra-network:
+    driver: bridge
+    name: infra-network
