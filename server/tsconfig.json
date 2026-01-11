@@ -31,6 +31,7 @@
       // Infrastructure
       "@Configs/*": ["./src/Infrastructure/Configs/*"],
       "@Security/*": ["./src/Infrastructure/Security/*"],
+      "@Generated/*": ["./src/Infrastructure/Generated/*"],
 
       // Presentation
       "@Hubs/*": ["./src/Presentation/Sockets/Hubs/*"],
