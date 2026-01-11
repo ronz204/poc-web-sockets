@@ -30,6 +30,7 @@
     "paths": {
       // Infrastructure
       "@Configs/*": ["./src/Infrastructure/Configs/*"],
+      "@Database/*": ["./src/Infrastructure/Database/*"],
       "@Security/*": ["./src/Infrastructure/Security/*"],
       "@Generated/*": ["./src/Infrastructure/Generated/*"],
 
