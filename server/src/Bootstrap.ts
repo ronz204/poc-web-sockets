@@ -2,9 +2,9 @@ import type { Express } from "express";
 import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
-import { AppConfig } from "@Configs/App";
-import { CorsConfig } from "@Configs/Cors";
 import { ExampleHub } from "@Hubs/ExampleHub";
+import { AppConfig } from "@Configs/AppConfig";
+import { CorsConfig } from "@Configs/CorsConfig";
 import { ApiRouting } from "@Routers/ApiRouting";
 
 export class Bootstrap {
