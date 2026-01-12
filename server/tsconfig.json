@@ -29,7 +29,9 @@
     // Path aliases
     "paths": {
       "@Generated/*": ["./generated/*"],
+      
       "@Configs/*": ["./src/Infrastructure/Configs/*"],
+      "@Logging/*": ["./src/Infrastructure/Logging/*"],
       "@Database/*": ["./src/Infrastructure/Database/*"],
       "@Security/*": ["./src/Infrastructure/Security/*"],
 
