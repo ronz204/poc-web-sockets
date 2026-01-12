@@ -10,8 +10,6 @@ const envSchema = z.object({
   // Database configs
   POSTGRES_DB: z.string().min(1),
   POSTGRES_URL: z.string().min(1),
-  POSTGRES_USER: z.string().min(1),
-  POSTGRES_PASSWORD: z.string().min(1),
 });
 
 export const Environment = envSchema.parse(process.env);
