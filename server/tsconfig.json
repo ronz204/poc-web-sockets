@@ -22,6 +22,12 @@
     "noUncheckedIndexedAccess": true,
 
     // Bun runtime types
-    "types": ["@types/bun"]
+    "types": ["@types/bun"],
+
+    // Paths - Base URL and path mappings
+    "paths": {
+      "@Routers/*": ["./src/Presentation/Routers/*"],
+      "@Controllers/*": ["./src/Presentation/Controllers/*"],
+    }
   }
 }
