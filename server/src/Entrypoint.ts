@@ -1,11 +1,9 @@
 import { Elysia } from "elysia";
+import { PingRouter } from "@Routers/PingRouter";
 
 const app = new Elysia();
 
-app.get("/", () => {
-  return { message: "Hello, Elysia!" };
-});
-
+app.use(PingRouter);
 app.listen(3000);
 
 const url = `http://${app.server?.hostname}:${app.server?.port}`;
