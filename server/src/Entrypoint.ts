@@ -1,11 +1,10 @@
-import express from "express";
-import { Bootstrap } from "./Bootstrap";
+import { Elysia } from "elysia";
+import { PingRouter } from "@Routers/PingRouter";
 
-const app = express();
-const bootstrap = new Bootstrap(app);
+const app = new Elysia();
 
-bootstrap.addCors();
-bootstrap.addRouting();
-bootstrap.addSockets();
+app.use(PingRouter);
+app.listen(3000);
 
-bootstrap.listen();
+const url = `http://${app.server?.hostname}:${app.server?.port}`;
+console.log(`🦊 Elysia is running at ${url}`);

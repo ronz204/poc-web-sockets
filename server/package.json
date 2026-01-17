@@ -1,25 +1,17 @@
 {
   "name": "server",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
+  "version": "1.0.50",
   "scripts": {
-    "prod": "bun run ./src/Entrypoint.ts",
-    "dev": "bun --hot run ./src/Entrypoint.ts"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
+    "prod": "bun run src/Entrypoint.ts",
+    "dev": "bun run --watch src/Entrypoint.ts"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.2.1",
-    "socket.io": "^4.8.3",
-    "winston": "^3.19.0",
-    "zod": "^4.3.5"
-  }
+    "elysia": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "private":true,
+  "type": "module",
+  "module": "src/Entrypoint.ts"
 }

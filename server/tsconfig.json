@@ -1,44 +1,33 @@
 {
   "compilerOptions": {
-    // Environment setup & latest features
+    // Environment - Latest JavaScript features
     "lib": ["ESNext"],
     "target": "ESNext",
-    "module": "Preserve",
-    "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "allowJs": true,
+    "module": "ESNext",
 
-    // Bundler mode
+    // Bundler mode - Modern module resolution for Bun
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 
-    // Best practices
+    // Type checking - Strict mode enabled
     "strict": true,
     "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Best practices - Additional safety checks
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
 
-    // Some stricter flags (disabled by default)
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noPropertyAccessFromIndexSignature": false,
+    // Bun runtime types
+    "types": ["@types/bun"],
 
-    // Path aliases
+    // Paths - Base URL and path mappings
     "paths": {
-      "@Generated/*": ["./generated/*"],
-      
-      "@Configs/*": ["./src/Infrastructure/Configs/*"],
-      "@Logging/*": ["./src/Infrastructure/Logging/*"],
-      "@Database/*": ["./src/Infrastructure/Database/*"],
-      "@Security/*": ["./src/Infrastructure/Security/*"],
-
-      "@Hubs/*": ["./src/Presentation/Sockets/Hubs/*"],
-      "@Routers/*": ["./src/Presentation/Https/Routers/*"],
-      "@Controllers/*": ["./src/Presentation/Https/Controllers/*"],
-      "@Middlewares/*": ["./src/Presentation/Https/Middlewares/*"],
+      "@Routers/*": ["./src/Presentation/Routers/*"],
+      "@Controllers/*": ["./src/Presentation/Controllers/*"],
     }
   }
 }
