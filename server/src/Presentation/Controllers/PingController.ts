@@ -1,5 +1,6 @@
-export abstract class PingController {
-  public static ping() {
-    return { "message": "Hello World from Elysia!!!" };
-  };
-};
+import Elysia from "elysia";
+
+export const PingController = new Elysia({ prefix: "/ping" })
+  .get("/", () => {
+    return { message: "pong" };
+  });
