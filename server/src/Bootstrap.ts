@@ -3,6 +3,7 @@ import cors from "@elysiajs/cors";
 
 // ==== Routers ====
 import { AuthRouter } from "@Routers/AuthRouter";
+import { SocketRouter } from "@Routers/SocketRouter";
 
 // ==== Plugins ====
 import { LoggingPlugin } from "@Plugins/LoggingPlugin";
@@ -13,7 +14,8 @@ const addCors = (app: Elysia) => {
 
 const addRouters = (app: Elysia) => {
   return app
-    .use(AuthRouter);
+    .use(AuthRouter)
+    .use(SocketRouter);
 };
 
 const addPlugins = (app: Elysia) => {
