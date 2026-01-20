@@ -1,29 +1,29 @@
 import Elysia from "elysia";
 import cors from "@elysiajs/cors";
 
-// ==== Controllers ====
-import { AuthController } from "@Controllers/AuthController";
+// ==== Routers ====
+import { AuthRouter } from "@Routers/AuthRouter";
 
-// ==== Middlewares ====
-import { LoggingMiddleware } from "@Middlewares/LoggingMiddleware";
+// ==== Plugins ====
+import { LoggingPlugin } from "@Plugins/LoggingPlugin";
 
 const addCors = (app: Elysia) => {
   return app.use(cors({ origin: "*" }));
 };
 
-const addControllers = (app: Elysia) => {
+const addRouters = (app: Elysia) => {
   return app
-    .use(AuthController);
+    .use(AuthRouter);
 };
 
-const addMiddlewares = (app: Elysia) => {
+const addPlugins = (app: Elysia) => {
   return app
-    .use(LoggingMiddleware);
+    .use(LoggingPlugin);
 };
 
 export const Bootstrap = (app: Elysia) => {
   return app
     .use(addCors)
-    .use(addMiddlewares)
-    .use(addControllers);
+    .use(addPlugins)
+    .use(addRouters);
 };
