@@ -6,12 +6,13 @@
     "dev": "bun run --watch src/Entrypoint.ts"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.4.1",
     "elysia": "latest"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
-  "private":true,
+  "private": true,
   "type": "module",
   "module": "src/Entrypoint.ts"
 }
