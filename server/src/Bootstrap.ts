@@ -1,9 +1,9 @@
 import Elysia from "elysia";
 import cors from "@elysiajs/cors";
-
 import { AuthRouter } from "@Routers/AuthRouter";
 import { ChatRouter } from "@Routers/ChatRouter";
-import { LoggingPlugin } from "@Plugins/LoggingPlugin";
+import { UserRouter } from "@Routers/UserRouter";
+import { LoggingPlugin } from "@Plugins/Logging";
 
 const addCors = (app: Elysia) => {
   return app.use(cors({ origin: "*" }));
@@ -12,7 +12,8 @@ const addCors = (app: Elysia) => {
 const addRouters = (app: Elysia) => {
   return app
     .use(AuthRouter)
-    .use(ChatRouter);
+    .use(ChatRouter)
+    .use(UserRouter);
 };
 
 const addPlugins = (app: Elysia) => {
