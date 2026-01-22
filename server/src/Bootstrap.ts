@@ -1,11 +1,8 @@
 import Elysia from "elysia";
 import cors from "@elysiajs/cors";
 
-// ==== Routers ====
 import { AuthRouter } from "@Routers/AuthRouter";
 import { ChatRouter } from "@Routers/ChatRouter";
-
-// ==== Plugins ====
 import { LoggingPlugin } from "@Plugins/LoggingPlugin";
 
 const addCors = (app: Elysia) => {
