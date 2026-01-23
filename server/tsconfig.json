@@ -28,6 +28,9 @@
     "paths": {
       "@Plugins/*": ["./src/Presentation/Plugins/*"],
       "@Routers/*": ["./src/Presentation/Routers/*"],
+      "@Database/*": ["./src/Infrastructure/Database/*"],
+      "@Controllers/*": ["./src/Presentation/Controllers/*"],
+      "@Middlewares/*": ["./src/Presentation/Middlewares/*"],
     }
   }
 }
