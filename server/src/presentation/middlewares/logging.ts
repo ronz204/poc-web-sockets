@@ -1,10 +1,10 @@
 import { Elysia, type ElysiaConfig } from "elysia";
 
 const config: ElysiaConfig<""> = {
-  name: "logging-plugin"
+  name: "logging-middleware"
 };
 
-export const LoggingPlugin = new Elysia(config)
+export const LoggingMiddleware = new Elysia(config)
   .onRequest(() => {
     console.log("Request received");
   })

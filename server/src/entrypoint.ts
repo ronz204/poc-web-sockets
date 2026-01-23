@@ -1,5 +1,5 @@
 import { Elysia } from "elysia";
-import { Bootstrap } from "./Bootstrap";
+import { Bootstrap } from "./bootstrap";
 
 const app = new Elysia()
   .use(Bootstrap)

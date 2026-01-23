@@ -2,8 +2,8 @@
   "name": "server",
   "version": "1.0.50",
   "scripts": {
-    "prod": "bun run src/Entrypoint.ts",
-    "dev": "bun run --watch src/Entrypoint.ts"
+    "prod": "bun run src/entrypoint.ts",
+    "dev": "bun run --watch src/entrypoint.ts"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.1",
@@ -18,5 +18,5 @@
   },
   "private": true,
   "type": "module",
-  "module": "src/Entrypoint.ts"
+  "module": "src/entrypoint.ts"
 }

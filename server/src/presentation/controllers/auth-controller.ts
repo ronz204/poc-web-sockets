@@ -1,8 +1,8 @@
 import { Elysia, type ElysiaConfig } from "elysia";
 
 const config: ElysiaConfig<"/auth"> = {
-  prefix: "/auth", name: "auth-router"
+  prefix: "/auth", name: "auth-controller"
 };
 
-export const AuthRouter = new Elysia(config)
+export const AuthController = new Elysia(config)
   .get("/health", () => ({ status: "healthy" }));

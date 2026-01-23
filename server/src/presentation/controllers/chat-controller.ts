@@ -1,10 +1,11 @@
 import { Elysia, type ElysiaConfig } from "elysia";
 
-const config: ElysiaConfig<""> = {
-  name: "chat-router"
+const config: ElysiaConfig<"/sockets"> = {
+  prefix: "/sockets", name: "chat-controller"
 };
 
-export const ChatRouter = new Elysia(config)
+export const ChatController = new Elysia(config)
+  .get("/health", () => ({ status: "healthy" }))
   .ws("/chat", {
     open: (ctx) => {
       ctx.subscribe("global");

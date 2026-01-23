@@ -26,11 +26,10 @@
 
     // Paths - Base URL and path mappings
     "paths": {
-      "@Plugins/*": ["./src/Presentation/Plugins/*"],
-      "@Routers/*": ["./src/Presentation/Routers/*"],
-      "@Database/*": ["./src/Infrastructure/Database/*"],
-      "@Controllers/*": ["./src/Presentation/Controllers/*"],
-      "@Middlewares/*": ["./src/Presentation/Middlewares/*"],
+      "@Models/*": ["./drizzle/models/*"],
+      "@Database/*": ["./src/infrastructure/database/*"],
+      "@Controllers/*": ["./src/presentation/controllers/*"],
+      "@Middlewares/*": ["./src/presentation/middlewares/*"],
     }
   }
 }
