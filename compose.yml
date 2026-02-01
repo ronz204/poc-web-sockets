@@ -1,8 +1,4 @@
 name: sockets
-
-include:
-  - ./server/compose.yml
-
 services:
   postgres:
     image: postgres:15-alpine
@@ -15,12 +11,12 @@ services:
     networks:
       - socket-network
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - sockets-data:/var/lib/postgresql/data
 
 volumes:
-  postgres-data:
+  sockets-data:
     driver: local
-    name: postgres-data
+    name: sockets-data
 
 networks:
   socket-network:
