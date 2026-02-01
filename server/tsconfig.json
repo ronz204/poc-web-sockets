@@ -27,9 +27,9 @@
     // Paths - Base URL and path mappings
     "paths": {
       "@Models/*": ["./drizzle/models/*"],
-      "@Database/*": ["./src/infrastructure/database/*"],
-      "@Controllers/*": ["./src/presentation/controllers/*"],
-      "@Middlewares/*": ["./src/presentation/middlewares/*"],
+      "@Database/*": ["./src/Infrastructure/Database/*"],
+      "@Controllers/*": ["./src/Presentation/Controllers/*"],
+      "@Middlewares/*": ["./src/Presentation/Middlewares/*"],
     }
   }
 }
