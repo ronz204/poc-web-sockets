@@ -1,18 +1,15 @@
-FROM oven/bun:1.3.5-alpine AS build
+FROM oven/bun:1.3.9-alpine AS base
 WORKDIR /usr/src/app
 
-FROM build AS dependencies
-RUN mkdir -p /temp
+# === Dependencies Stage ===
+FROM base AS dependencies
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
-COPY package.json bun.lock /temp/
-RUN cd /temp && bun install --frozen-lockfile --production
-
-FROM build AS release
-COPY --from=dependencies /temp/node_modules ./node_modules
-
-RUN apk add --no-cache curl
-COPY --chown=bun:bun . .
-
+# === Development Stage ===
+FROM dependencies AS development
+COPY . .
 USER bun
+
 EXPOSE 3000
-ENTRYPOINT [ "bun", "run", "prod" ]
+ENTRYPOINT [ "bun", "run", "start" ]
