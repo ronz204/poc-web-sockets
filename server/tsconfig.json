@@ -26,7 +26,7 @@
 
     // Path aliases
     "paths": {
-      "@Models/*": ["./drizzle/models/*"],
+      "@Models/*": ["./drizzle/Models/*"],
       "@Database/*": ["./source/Infrastructure/Database/*"],
       "@Controllers/*": ["./source/Presentation/Controllers/*"],
     }
