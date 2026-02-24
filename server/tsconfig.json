@@ -24,12 +24,11 @@
     // Bun runtime types
     "types": ["@types/bun"],
 
-    // Paths - Base URL and path mappings
+    // Path aliases
     "paths": {
       "@Models/*": ["./drizzle/models/*"],
-      "@Database/*": ["./src/Infrastructure/Database/*"],
-      "@Controllers/*": ["./src/Presentation/Controllers/*"],
-      "@Middlewares/*": ["./src/Presentation/Middlewares/*"],
+      "@Database/*": ["./source/Infrastructure/Database/*"],
+      "@Controllers/*": ["./source/Presentation/Controllers/*"],
     }
   }
 }
