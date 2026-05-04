@@ -1,13 +1,12 @@
-model Role {
+model Scope {
   id   Int    @id @default(autoincrement())
   name String @unique
 
-  users  User[]
-  scopes Scope[]
+  roles Role[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("roles")
+  @@map("scopes")
   @@schema("sample")
 }
