@@ -8,5 +8,5 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  schemas = ["sockets"]
+  schemas = ["sample"]
 }
