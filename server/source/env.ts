@@ -5,6 +5,7 @@ const envSchema = z.object({
   // Application Config
   // ==========================================
   APP_NAME: z.string().default("Sockets API"),
+  APP_VERSION: z.string().default("1.0.0"),
   APP_PORT: z.string().transform((val) => parseInt(val, 10)).default(3000),
 
   // ==========================================
