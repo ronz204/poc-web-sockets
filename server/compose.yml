@@ -1,0 +1,18 @@
+name: sockets-api
+
+include:
+  - path: ./docker/redis.compose.yml
+  - path: ./docker/postgres.compose.yml
+
+volumes:
+  sockets-pg-data:
+    driver: local
+    name: sockets-pg-data
+  sockets-redis-data:
+    driver: local
+    name: sockets-redis-data
+
+networks:
+  sockets-network:
+    driver: bridge
+    name: sockets-network
