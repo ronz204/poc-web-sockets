@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "bun run --watch source/boot.ts"
   },
+  "dependencies": {
+    "zod": "^4.4.2"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
