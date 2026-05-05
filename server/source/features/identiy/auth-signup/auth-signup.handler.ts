@@ -14,7 +14,7 @@ export class AuthSignUpHandler {
     return { userId: created.id };
   };
 
-  public async hash(password: string) {
+  private async hash(password: string) {
     return await Bun.password.hash(password);
   };
 };
