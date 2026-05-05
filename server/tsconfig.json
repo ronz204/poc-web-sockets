@@ -36,9 +36,10 @@
       "@plugins/*": ["./source/plugins/*"],
       "@features/*": ["./source/features/*"],
       "@database/*": ["./source/database/*"],
+      "@interfaces/*": ["./source/interfaces/*"],
 
       "@errors/*": ["./source/shared/errors/*"],
-      "@configs/*": ["./source/shared/configs/*"],
+      "@helpers/*": ["./source/shared/helpers/*"],
     }
   }
 }
