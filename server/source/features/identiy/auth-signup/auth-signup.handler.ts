@@ -1,7 +1,8 @@
 import type { IUserDao } from "@dal/users/user.idao";
+import type { Handler } from "@interfaces/handler.inter";
 import type { Request, Response } from "./auth-signup.schema";
 
-export class AuthSignUpHandler {
+export class AuthSignUpHandler implements Handler<Request, Response> {
   constructor(private readonly userDao: IUserDao) { };
 
   public async handle(req: Request): Promise<Response> {
