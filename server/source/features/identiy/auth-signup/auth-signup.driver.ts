@@ -2,9 +2,9 @@ import { Elysia } from "elysia";
 import { PrismaPlugin } from "@database/prisma.plugin";
 import { AccessPlugin } from "@auth/access/access.plugin";
 
-import { AuthResponse } from "@auth/auth.schema";
 import { AuthSignUpBody } from "./auth-signup.schema";
 import { AuthSignUpHandler } from "./auth-signup.handler";
+import { AccessResponse } from "@auth/access/access.schema";
 
 const name: string = "auth-signup.plugin";
 
@@ -23,5 +23,5 @@ export const AuthSignUpDriver = new Elysia({ name })
     return status(200, { type: "Bearer", token });
   }, {
     body: AuthSignUpBody,
-    response: AuthResponse,
+    response: AccessResponse,
   });

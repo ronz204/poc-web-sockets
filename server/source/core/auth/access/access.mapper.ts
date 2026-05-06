@@ -1,13 +1,13 @@
-import type { AuthPayload } from "./auth.schema";
+import type { AccessPayload } from "./access.schema";
 import type { UserGetPayload } from "@prisma/models";
 
 type Data = UserGetPayload<{ include: { roles: true } }>;
 
-export abstract class AuthMapper {
-  public static toResponse(data: Data): AuthPayload {
+export abstract class AccessMapper {
+  public static toResponse(data: Data): AccessPayload {
     return {
       claims: {
-        userId: data.id,
+        user: data.id,
         roles: data.roles.map(role => role.name),
       },
     };

@@ -1,12 +1,12 @@
 import { env } from "@env";
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
-import { AuthClaims } from "@auth/auth.schema";
+import { AccessClaims } from "./access.schema";
 
 export const AccessPlugin = new Elysia({ name: "access.plugin" })
   .use(jwt({
     name: "jwt",
-    schema: AuthClaims,
+    schema: AccessClaims,
     exp: env.ACCESS_TTL,
     secret: env.SECRET_KEY,
   }));

@@ -2,7 +2,7 @@ import type { IUserDao } from "@dal/users/user.idao";
 import type { Handler } from "@interfaces/handler.inter";
 import type { Request, Response } from "./auth-signup.schema";
 
-import { AuthMapper } from "@auth/auth.mapper";
+import { AccessMapper } from "@auth/access/access.mapper";
 
 export class AuthSignUpHandler implements Handler<Request, Response> {
   constructor(private readonly userDao: IUserDao) { };
@@ -13,7 +13,7 @@ export class AuthSignUpHandler implements Handler<Request, Response> {
 
     req.body.password = await this.hash(req.body.password);
     const created = await this.userDao.create(req.body);
-    return AuthMapper.toResponse(created);
+    return AccessMapper.toResponse(created);
   };
 
   private async hash(password: string) {
