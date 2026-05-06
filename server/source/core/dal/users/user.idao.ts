@@ -6,8 +6,8 @@ import { Update } from "./queries/update.query";
 import { Obtain } from "./queries/obtain.query";
 
 export interface IUserDao {
-  create(args: Create.Args): Promise<User>;
   delete(args: Delete.Args): Promise<User>;
-  update(args: Update.Args): Promise<User>;
-  obtain(args: Obtain.Args): Promise<Obtain.Result>;
+  create(args: Create.Args): Promise<Create.Result>;
+  update(args: Update.Args): Promise<Update.Result>;
+  obtain(args: Obtain.Args): Promise<Obtain.Result | null>;
 };

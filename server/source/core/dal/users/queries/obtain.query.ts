@@ -1,4 +1,4 @@
-import type { User } from "@prisma/client";
+import type { UserGetPayload } from "@prisma/models";
 import type { UserFindUniqueArgs } from "@prisma/models";
 
 export namespace Obtain {
@@ -15,8 +15,9 @@ export namespace Obtain {
         name: args.name,
         email: args.email,
       },
+      include: { roles: true },
     } satisfies UserFindUniqueArgs;
   };
 
-  export type Result = User | null;
+  export type Result = UserGetPayload<ReturnType<typeof query>>;
 };

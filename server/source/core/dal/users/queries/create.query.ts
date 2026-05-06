@@ -1,3 +1,4 @@
+import type { UserGetPayload } from "@prisma/models";
 import type { UserCreateArgs } from "@prisma/models";
 
 export namespace Create {
@@ -13,7 +14,11 @@ export namespace Create {
         name: args.name,
         email: args.email,
         password: args.password,
+        roles: { connect: { name: "USER" } }
       },
+      include: { roles: true },
     } satisfies UserCreateArgs;
   };
+
+  export type Result = UserGetPayload<ReturnType<typeof query>>;
 };

@@ -1,3 +1,4 @@
+import type { UserGetPayload } from "@prisma/models";
 import type { UserUpdateArgs } from "@prisma/models";
 
 export namespace Update {
@@ -16,6 +17,9 @@ export namespace Update {
         email: args.email,
         password: args.password,
       },
+      include: { roles: true },
     } satisfies UserUpdateArgs;
   };
+
+  export type Result = UserGetPayload<ReturnType<typeof query>>;
 };
