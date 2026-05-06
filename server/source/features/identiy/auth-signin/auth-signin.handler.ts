@@ -2,6 +2,8 @@ import type { IUserDao } from "@dal/users/user.idao";
 import type { Handler } from "@interfaces/handler.inter";
 import type { Request, Response } from "./auth-signin.schema";
 
+import { AuthMapper } from "@auth/auth.mapper";
+
 export class AuthSignInHandler implements Handler<Request, Response> {
   constructor(private readonly userDao: IUserDao) { };
 
@@ -11,8 +13,7 @@ export class AuthSignInHandler implements Handler<Request, Response> {
 
     const isValid = await this.verify(req.body.password, user.password);
     if (!isValid) throw new Error("Invalid credentials, wrong password");
-    
-    return { userId: user.id };
+    return AuthMapper.toResponse(user);
   };
 
   private async verify(psswd: string, hash: string) {
