@@ -1,0 +1,27 @@
+import { Elysia } from "elysia";
+import { PrismaPlugin } from "@database/prisma.plugin";
+import { AccessPlugin } from "@auth/access/access.plugin";
+
+import { AuthResponse } from "@auth/auth.schema";
+import { AuthSignUpBody } from "./auth-signup.schema";
+import { AuthSignUpHandler } from "./auth-signup.handler";
+
+const name: string = "auth-signup.plugin";
+
+export const AuthSignUpDriver = new Elysia({ name })
+  .use(PrismaPlugin)
+  .use(AccessPlugin)
+
+  .derive(({ userDao }) => ({
+    handler: new AuthSignUpHandler(userDao),
+  }))
+
+  .post("/signup", async ({ status, body, jwt, handler }) => {
+    const response = await handler.handle({ body });
+    const token = await jwt.sign({ user: response.userId });
+
+    return status(200, { type: "Bearer", token });
+  }, {
+    body: AuthSignUpBody,
+    response: AuthResponse,
+  });
