@@ -3,11 +3,13 @@ import { Elysia } from "elysia";
 import { CorsPlugin } from "@plugins/cors.plugin";
 import { HealthPlugin } from "@plugins/health.plugin";
 import { ScalarPlugin } from "@plugins/scalar.plugin";
+import { IdentityPlugin } from "@features/identiy/plugin";
 
 export const app = new Elysia({ prefix: "/api" })
   .use(CorsPlugin)
   .use(ScalarPlugin)
   .use(HealthPlugin)
+  .use(IdentityPlugin)
   .listen(env.APP_PORT);
 
 const url = `http://${app.server?.hostname}:${app.server?.port}`;
