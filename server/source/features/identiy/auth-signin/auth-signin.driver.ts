@@ -18,7 +18,7 @@ export const AuthSignInDriver = new Elysia({ name })
   
   .post("/signin", async ({ status, body, jwt, handler }) => {
     const response = await handler.handle({ body });
-    const token = await jwt.sign({ user: response.userId });
+    const token = await jwt.sign(response.claims);
 
     return status(200, { type: "Bearer", token });
   }, {
