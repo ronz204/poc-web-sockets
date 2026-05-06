@@ -1,4 +1,5 @@
 import { t, type Static } from "elysia";
+import { AuthPayload } from "@auth/auth.schema";
 
 export const AuthSignInBody = t.Object({
   email: t.String({ format: "email", maxLength: 255 }),
@@ -9,9 +10,5 @@ export const AuthSignInRequest = t.Object({
   body: AuthSignInBody,
 });
 
-export const AuthSignInResponse = t.Object({
-  userId: t.Number({ minimum: 1 }),
-});
-
+export type Response = Static<typeof AuthPayload>;
 export type Request = Static<typeof AuthSignInRequest>;
-export type Response = Static<typeof AuthSignInResponse>;
