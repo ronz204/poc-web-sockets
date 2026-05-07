@@ -36,10 +36,10 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
               const rows = await scopeDao.getByRole({ role });
               roleScopes = rows.map(s => s.name);
               await scopesCache.set(role, roleScopes);
-            }
+            };
 
             for (const scope of roleScopes) userScopes.add(scope);
-          }
+          };
 
           if (!scopes.every(s => userScopes.has(s))) return status(403, "Forbidden");
         };
