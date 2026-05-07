@@ -9,6 +9,10 @@ export const AccessPayload = t.Object({
   claims: AccessClaims,
 });
 
+export const AccessHeaders = t.Object({
+  authorization: t.Optional(t.String()),
+});
+
 export const AccessResponse = t.Object({
   type: t.Literal("Bearer"),
   token: t.String({ minLength: 1 }),
