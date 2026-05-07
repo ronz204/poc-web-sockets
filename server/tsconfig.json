@@ -32,6 +32,7 @@
       "@env": ["./source/env.ts"],
       "@dal/*": ["./source/core/dal/*"],
       "@auth/*": ["./source/core/auth/*"],
+      "@cache/*": ["./source/core/cache/*"],
       
       "@plugins/*": ["./source/plugins/*"],
       "@features/*": ["./source/features/*"],
