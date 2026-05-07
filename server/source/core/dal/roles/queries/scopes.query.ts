@@ -1,6 +1,6 @@
 import type { ScopeFindManyArgs } from "@prisma/models";
 
-export namespace GetByRole {
+export namespace Scopes {
   export interface Args {
     role: string;
   };

@@ -19,7 +19,7 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
   .macro({
     withAuth: (scopes: string[] = []) => ({
       headers: AccessHeaders,
-      resolve: async ({ status, jwt, headers, scopeDao, scopesCache }) => {
+      resolve: async ({ status, jwt, headers, roleDao, scopesCache }) => {
         const header = headers["authorization"];
         if (!header?.startsWith("Bearer ")) return status(401, "Unauthorized");
 
@@ -33,7 +33,7 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
             let roleScopes = await scopesCache.get(role);
 
             if (!roleScopes) {
-              const rows = await scopeDao.getByRole({ role });
+              const rows = await roleDao.getScopes({ role });
               roleScopes = rows.map(s => s.name);
               await scopesCache.set(role, roleScopes);
             };
