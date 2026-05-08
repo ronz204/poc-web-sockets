@@ -2,10 +2,10 @@ import { env } from "@env";
 import { Elysia } from "elysia";
 import { RedisClient } from "bun";
 
-import { ScopesCache } from "@cache/scopes.cache";
+import { RolesCache } from "@cache/roles.cache";
 
 export const RedisPlugin = new Elysia({ name: "redis.plugin" })
   .decorate(() => {
     const redis = new RedisClient(env.REDIS_URL);
-    return { scopesCache: new ScopesCache(redis) };
+    return { rolesCache: new RolesCache(redis) };
   });
