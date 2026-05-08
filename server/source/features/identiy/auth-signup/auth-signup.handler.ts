@@ -1,4 +1,4 @@
-import type { IUserDao } from "@dal/users/user.idao";
+import type { IUserDao } from "@dal/users/user.dao";
 import type { Handler } from "@interfaces/handler.inter";
 import type { Request, Response } from "./auth-signup.schema";
 
