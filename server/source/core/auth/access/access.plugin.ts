@@ -1,6 +1,7 @@
 import { env } from "@env";
 import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
+import { AccessHandler } from "./access.handler";
 import { RedisPlugin } from "@database/redis.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
 import { AccessClaims, AccessHeaders } from "./access.schema";
@@ -15,11 +16,11 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
     exp: env.ACCESS_TTL,
     secret: env.SECRET_KEY,
   }))
-  
+
   .macro({
     withAuth: (scopes: string[] = []) => ({
       headers: AccessHeaders,
-      resolve: async ({ status, jwt, headers, roleDao, scopesCache }) => {
+      resolve: async ({ status, jwt, headers, roleDao, rolesCache }) => {
         const header = headers["authorization"];
         if (!header?.startsWith("Bearer ")) return status(401, "Unauthorized");
 
@@ -27,21 +28,12 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
         if (!claims) return status(401, "Unauthorized");
 
         if (scopes.length > 0) {
-          const userScopes = new Set<string>();
+          const handler = new AccessHandler(roleDao, rolesCache);
+          const userScopes = await handler.handle(claims);
 
-          for (const role of claims.roles) {
-            let roleScopes = await scopesCache.get(role);
-
-            if (!roleScopes) {
-              const rows = await roleDao.getScopes({ role });
-              roleScopes = rows.map(s => s.name);
-              await scopesCache.set(role, roleScopes);
-            };
-
-            for (const scope of roleScopes) userScopes.add(scope);
+          if (!scopes.every(s => userScopes.has(s))) {
+            return status(403, "Forbidden");
           };
-
-          if (!scopes.every(s => userScopes.has(s))) return status(403, "Forbidden");
         };
 
         return { claims };
