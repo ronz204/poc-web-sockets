@@ -22,7 +22,10 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
       headers: AccessHeaders,
       resolve: async ({ status, jwt, headers, roleDao, rolesCache }) => {
         const header = headers["authorization"];
-        if (!header?.startsWith("Bearer ")) return status(401, "Unauthorized");
+        
+        if (!header?.startsWith("Bearer ")) {
+          return status(401, "Unauthorized");
+        };
 
         const claims = await jwt.verify(header.slice(7));
         if (!claims) return status(401, "Unauthorized");
