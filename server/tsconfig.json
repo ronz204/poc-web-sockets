@@ -26,21 +26,19 @@
 
     // Module resolution paths
     "paths": {
+      "@env": ["./source/env.ts"],
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
-
-      "@env": ["./source/env.ts"],
-      "@dal/*": ["./source/core/dal/*"],
-      "@auth/*": ["./source/core/auth/*"],
-      "@cache/*": ["./source/core/cache/*"],
-      
+  
       "@plugins/*": ["./source/plugins/*"],
+      "@security/*": ["./source/security/*"],
       "@features/*": ["./source/features/*"],
       "@database/*": ["./source/database/*"],
       "@interfaces/*": ["./source/interfaces/*"],
 
-      "@errors/*": ["./source/shared/errors/*"],
-      "@helpers/*": ["./source/shared/helpers/*"],
+      "@bases/*": ["./source/shared/bases/*"],
+      "@repos/*": ["./source/shared/repos/*"],
+      "@cache/*": ["./source/shared/cache/*"],
     }
   }
 }

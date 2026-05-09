@@ -1,16 +1,16 @@
 import { Elysia } from "elysia";
 import { PrismaPlugin } from "@database/prisma.plugin";
-import { AccessPlugin } from "@auth/access/access.plugin";
+import { AccessDriver } from "@security/access/access.driver";
 
 import { AuthSignUpBody } from "./auth-signup.schema";
 import { AuthSignUpHandler } from "./auth-signup.handler";
-import { AccessResponse } from "@auth/access/access.schema";
+import { AccessResponse } from "@security/access/access.schema";
 
-const name: string = "auth-signup.plugin";
+const name: string = "auth-signup.driver";
 
 export const AuthSignUpDriver = new Elysia({ name })
   .use(PrismaPlugin)
-  .use(AccessPlugin)
+  .use(AccessDriver)
 
   .derive(({ usersDao }) => ({
     handler: new AuthSignUpHandler(usersDao),
