@@ -1,6 +1,6 @@
 import { env } from "@env";
-import { Elysia, t } from "elysia";
 import { jwt } from "@elysiajs/jwt";
+import { Elysia, t, type Static } from "elysia";
 
 export const TokenClaims = t.Object({
   user: t.Number({ minimum: 1 }),
@@ -14,3 +14,5 @@ export const TokenPlugin = new Elysia({ name: "token.plugin" })
     exp: env.ACCESS_TTL,
     secret: env.SECRET_KEY,
   }));
+
+export type TokenClaims = Static<typeof TokenClaims>;
