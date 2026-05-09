@@ -1,16 +1,16 @@
-import type { IUserDao } from "@dal/users/user.dao";
+import type { IUsersDao } from "@repos/users/user.dao";
 import type { Handler } from "@interfaces/handler.inter";
 import type { Request, Response } from "./auth-signup.schema";
 
 export class AuthSignUpHandler implements Handler<Request, Response> {
-  constructor(private readonly userDao: IUserDao) { };
+  constructor(private readonly usersDao: IUsersDao) { };
 
   public async handle(req: Request): Promise<Response> {
-    const exists = await this.userDao.obtain(req.body);
+    const exists = await this.usersDao.obtain(req.body);
     if (exists) throw new Error("User already exists");
 
     req.body.password = await this.hash(req.body.password);
-    const created = await this.userDao.create(req.body);
+    const created = await this.usersDao.create(req.body);
 
     return {
       claims: {

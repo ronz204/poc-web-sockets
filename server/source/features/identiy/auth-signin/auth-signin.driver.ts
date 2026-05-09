@@ -12,8 +12,8 @@ export const AuthSignInDriver = new Elysia({ name })
   .use(PrismaPlugin)
   .use(AccessPlugin)
   
-  .derive(({ userDao }) => ({
-    handler: new AuthSignInHandler(userDao),
+  .derive(({ usersDao }) => ({
+    handler: new AuthSignInHandler(usersDao),
   }))
   
   .post("/signin", async ({ status, body, jwt, handler }) => {

@@ -3,8 +3,8 @@ import { Elysia } from "elysia";
 import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
-import { UserDao } from "@dal/users/user.dao";
-import { RoleDao } from "@dal/roles/role.dao";
+import { UsersDao } from "@repos/users/user.dao";
+import { RolesDao } from "@repos/roles/roles.dao";
 
 export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
   .decorate(() => {
@@ -12,7 +12,7 @@ export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
     const prisma = new PrismaClient({ adapter });
 
     return {
-      userDao: new UserDao(prisma),
-      roleDao: new RoleDao(prisma),
+      usersDao: new UsersDao(prisma),
+      rolesDao: new RolesDao(prisma),
     };
   });

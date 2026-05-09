@@ -3,12 +3,12 @@ import { PrismaClient } from "@prisma/client";
 import { Scopes } from "./queries/scopes.query";
 import { Update } from "./queries/update.query";
 
-export interface IRoleDao {
+export interface IRolesDao {
   getScopes(args: Scopes.Args): Promise<Scope[]>;
   update(args: Update.Args): Promise<Update.Result>;
 };
 
-export class RoleDao implements IRoleDao {
+export class RolesDao implements IRolesDao {
   constructor(private readonly prisma: PrismaClient) { };
 
   public async getScopes(args: Scopes.Args): Promise<Scope[]> {
