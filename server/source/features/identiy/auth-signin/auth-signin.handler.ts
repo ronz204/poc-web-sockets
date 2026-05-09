@@ -1,9 +1,9 @@
+import type { Handler } from "@bases/handler.base";
 import type { IUsersDao } from "@repos/users/user.dao";
-import type { Handler } from "@interfaces/handler.inter";
 import type { Request, Response } from "./auth-signin.schema";
 
 export class AuthSignInHandler implements Handler<Request, Response> {
-  constructor(private readonly usersDao: IUsersDao) { };
+  constructor(private readonly usersDao: IUsersDao) {};
 
   public async handle(req: Request): Promise<Response> {
     const user = await this.usersDao.obtain(req.body);
