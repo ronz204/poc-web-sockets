@@ -14,7 +14,7 @@ export const AccessDriver = new Elysia({ name: "access.driver" })
   .use(PrismaPlugin)
 
   .decorate(({ rolesDao, rolesCache }) => ({
-    guard: new AccessHandler(rolesDao, rolesCache),
+    guarder: new AccessHandler(rolesDao, rolesCache),
   }))
 
   .use(jwt({
@@ -27,7 +27,7 @@ export const AccessDriver = new Elysia({ name: "access.driver" })
   .macro({
     isAuth: (scopes: string[] = []) => ({
       headers: AccessHeaders,
-      resolve: async ({ headers, jwt, guard }) => {
+      resolve: async ({ headers, jwt, guarder }) => {
         const header = headers["authorization"];
 
         if (!header?.startsWith("Bearer ")) {
@@ -37,7 +37,7 @@ export const AccessDriver = new Elysia({ name: "access.driver" })
         const claims = await jwt.verify(header.slice(7));
         if (!claims) return status(401, "Unauthorized");
 
-        const userScopes = await guard.handle(claims);
+        const userScopes = await guarder.handle(claims);
         if (!scopes.every(s => userScopes.has(s))) {
           return status(403, "Forbidden");
         };
