@@ -30,11 +30,11 @@
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
   
+      "@sandbox/*": ["./source/sandbox/*"],
       "@plugins/*": ["./source/plugins/*"],
       "@security/*": ["./source/security/*"],
       "@features/*": ["./source/features/*"],
       "@database/*": ["./source/database/*"],
-      "@interfaces/*": ["./source/interfaces/*"],
 
       "@bases/*": ["./source/shared/bases/*"],
       "@repos/*": ["./source/shared/repos/*"],
