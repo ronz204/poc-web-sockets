@@ -4,7 +4,7 @@ import { PrismaPlugin } from "@database/prisma.plugin";
 
 import { AuthSignInBody } from "./auth-signin.schema";
 import { AuthSignInHandler } from "./auth-signin.handler";
-import { AccessResponse } from "@security/testing/access.schema";
+import { AccessResponse } from "@security/access/access.schema";
 
 const name: string = "auth-signin.driver";
 

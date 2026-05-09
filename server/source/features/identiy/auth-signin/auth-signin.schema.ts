@@ -1,5 +1,5 @@
 import { t, type Static } from "elysia";
-import { AccessPayload } from "@auth/access/access.schema";
+import { AccessPayload } from "@security/access/access.schema";
 
 export const AuthSignInBody = t.Object({
   email: t.String({ format: "email", maxLength: 255 }),
