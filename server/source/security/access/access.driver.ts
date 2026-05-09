@@ -1,14 +1,21 @@
 import { env } from "@env";
-import { Elysia } from "elysia";
 import { jwt } from "@elysiajs/jwt";
+import { Elysia, status } from "elysia";
+
+import { AccessClaims } from "./access.schema";
+import { AccessHeaders } from "./access.schema";
 import { AccessHandler } from "./access.handler";
+
 import { RedisPlugin } from "@database/redis.plugin";
 import { PrismaPlugin } from "@database/prisma.plugin";
-import { AccessClaims, AccessHeaders } from "./access.schema";
 
-export const AccessPlugin = new Elysia({ name: "access.plugin" })
+export const AccessDriver = new Elysia({ name: "access.driver" })
   .use(RedisPlugin)
   .use(PrismaPlugin)
+
+  .decorate(({ rolesDao, rolesCache }) => ({
+    guard: new AccessHandler(rolesDao, rolesCache),
+  }))
 
   .use(jwt({
     name: "jwt",
@@ -18,11 +25,11 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
   }))
 
   .macro({
-    withAuth: (scopes: string[] = []) => ({
+    isAuth: (scopes: string[] = []) => ({
       headers: AccessHeaders,
-      resolve: async ({ status, jwt, headers, roleDao, rolesCache }) => {
+      resolve: async ({ headers, jwt, guard }) => {
         const header = headers["authorization"];
-        
+
         if (!header?.startsWith("Bearer ")) {
           return status(401, "Unauthorized");
         };
@@ -30,13 +37,9 @@ export const AccessPlugin = new Elysia({ name: "access.plugin" })
         const claims = await jwt.verify(header.slice(7));
         if (!claims) return status(401, "Unauthorized");
 
-        if (scopes.length > 0) {
-          const handler = new AccessHandler(roleDao, rolesCache);
-          const userScopes = await handler.handle(claims);
-
-          if (!scopes.every(s => userScopes.has(s))) {
-            return status(403, "Forbidden");
-          };
+        const userScopes = await guard.handle(claims);
+        if (!scopes.every(s => userScopes.has(s))) {
+          return status(403, "Forbidden");
         };
 
         return { claims };
