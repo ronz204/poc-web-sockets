@@ -1,5 +1,6 @@
 import { t, type Static } from "elysia";
 import { AccessPayload } from "@security/access/access.schema";
+import { AgentSchema } from "@security/xsesion/xsession.schema";
 
 export const AuthSignInBody = t.Object({
   email: t.String({ format: "email", maxLength: 255 }),
@@ -8,6 +9,7 @@ export const AuthSignInBody = t.Object({
 
 export const AuthSignInRequest = t.Object({
   body: AuthSignInBody,
+  agent: AgentSchema,
 });
 
 export type Response = Static<typeof AccessPayload>;
