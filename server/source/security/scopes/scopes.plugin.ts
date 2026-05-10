@@ -9,7 +9,7 @@ export const ScopePlugin = new Elysia({ name: "scope.plugin" })
   .use(PrismaPlugin)
   .use(RedisPlugin)
 
-  .derive({ as: "global" }, ({ rolesDao, rolesCache }) => ({
+  .decorate(({ rolesDao, rolesCache }) => ({
     guarder: new ScopesHandler(rolesDao, rolesCache),
   }))
 
