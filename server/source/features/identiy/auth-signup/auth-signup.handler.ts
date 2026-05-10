@@ -3,12 +3,13 @@ import type { IUsersDao } from "@repos/users/user.dao";
 import type { Request, Response } from "./auth-signup.schema";
 import type { ISessionDao } from "@repos/session/sessions.dao";
 
+import { ClaimsMapper } from "@plugins/token.plugin";
 import { XSessionFactory } from "@security/xsesion/xsession.factory";
 
 export class AuthSignUpHandler implements Handler<Request, Response> {
   constructor(
     private readonly usersDao: IUsersDao,
-    private readonly sessionDao: ISessionDao) { };
+    private readonly sessionDao: ISessionDao) {};
 
   public async handle(req: Request): Promise<Response> {
     const exists = await this.usersDao.obtain(req.body);
@@ -22,13 +23,7 @@ export class AuthSignUpHandler implements Handler<Request, Response> {
     });
 
     await this.sessionDao.create(session);
-
-    return {
-      claims: {
-        user: created.id,
-        roles: created.roles.map(role => role.name),
-      },
-    };
+    return { claims: ClaimsMapper.map(created) };
   };
 
   private async hash(password: string) {
