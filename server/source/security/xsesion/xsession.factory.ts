@@ -1,19 +1,24 @@
 import { env } from "@env";
 import type { AgentInfo } from "./xsession.schema";
 
-interface Args {
+interface SessionArgs {
   userId: number;
   agent: AgentInfo;
   expiresAt?: Date;
 };
 
 export abstract class XSessionFactory {
-  public static build(args: Args) {
+  public static build(args: SessionArgs) {
+    const { agent, userId, expiresAt } = args;
+
     return {
-      ...args.agent,
-      userId: args.userId,
+      ...agent, userId: userId,
       hash: crypto.randomUUID(),
-      expiresAt: args.expiresAt ?? new Date(Date.now() + env.REFRESH_TTL),
+      expiresAt: expiresAt ?? this.getDefaultExpiry(),
     };
+  };
+
+  private static getDefaultExpiry(): Date {
+    return new Date(Date.now() + env.REFRESH_TTL);
   };
 };
