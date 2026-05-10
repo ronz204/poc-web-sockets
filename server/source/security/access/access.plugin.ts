@@ -5,7 +5,7 @@ import { TokenPlugin } from "@plugins/token.plugin";
 export const AccessPlugin = new Elysia({ name: "access.plugin" })
   .use(TokenPlugin)
   .guard({ headers: AccessHeaders })
-  .derive({ as: "global" }, async ({ headers, jwt }) => {
+  .resolve({ as: "global" }, async ({ headers, jwt }) => {
     const header = headers["authorization"];
 
     if (!header?.startsWith("Bearer ")) {

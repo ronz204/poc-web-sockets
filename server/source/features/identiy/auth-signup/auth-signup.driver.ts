@@ -25,7 +25,6 @@ export const AuthSignUpDriver = new Elysia({ name })
 
     return status(200, { type: "Bearer", token });
   }, {
-    withAgent: true,
     body: AuthSignUpBody,
     response: AccessResponse,
   });
