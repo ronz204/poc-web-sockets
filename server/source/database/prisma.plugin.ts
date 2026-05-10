@@ -5,6 +5,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 
 import { UsersDao } from "@repos/users/user.dao";
 import { RolesDao } from "@repos/roles/roles.dao";
+import { SessionDao } from "@repos/session/sessions.dao";
 
 export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
   .decorate(() => {
@@ -14,5 +15,6 @@ export const PrismaPlugin = new Elysia({ name: "prisma.plugin" })
     return {
       usersDao: new UsersDao(prisma),
       rolesDao: new RolesDao(prisma),
+      sessionDao: new SessionDao(prisma),
     };
   });
