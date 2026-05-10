@@ -1,0 +1,20 @@
+model Session {
+  id   Int    @id @default(autoincrement())
+  hash String @unique
+  agent   String
+  device  String
+  address String
+
+  userId Int // Foreign key to User
+  user   User @relation(fields: [userId], references: [id])
+
+  expiresAt DateTime
+  revokedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("sessions")
+  @@schema("sample")
+}

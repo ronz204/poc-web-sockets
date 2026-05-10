@@ -4,7 +4,8 @@ model User {
   email    String @unique
   password String
 
-  roles Role[]
+  roles    Role[]
+  sessions Session[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
